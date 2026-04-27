@@ -2,19 +2,16 @@ import { useState } from "react";
 import Botao from "./Botao.jsx"; 
 
 export default function App() {
-  const [listaCarrinho, setListaCarrinho] = useState([]);
+  const [ToDo, setToDo] = useState([]);
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState(0);
   
-  const validarPrompt = () => {};
-
   function adicionar() {
     if (nome === "" || quantidade <= 0) {
       return;
     }
 
-    validarPrompt();
-    console.log(listaCarrinho);
+    console.log(ToDo);
 
     const produto = {
       "id": Math.random(), 
@@ -23,36 +20,36 @@ export default function App() {
       comprado: false 
     }
 
-    setListaCarrinho([...listaCarrinho, produto]);
+    setToDo([...ToDo, produto]);
     setNome("");
     setQuantidade(0);
 
-    console.log(listaCarrinho);
+    console.log(ToDo);
   }
 
   function removerItem(idProduto) {
-    const listaFiltrada = listaCarrinho.filter(item => item.id !== idProduto);
-    setListaCarrinho(listaFiltrada);
+    const listaFiltrada = ToDo.filter(item => item.id !== idProduto);
+    setToDo(listaFiltrada);
   }
 
   function adicionarQuantidade(idProduto) {
-    const listaProdutosAtualizada = listaCarrinho.map(produto => {
+    const listaProdutosAtualizada = ToDo.map(produto => {
       if (produto.id === idProduto) {
         return { ...produto, quantidade: Number(produto.quantidade) + 1 };
       }
       return produto;
     });
-    setListaCarrinho(listaProdutosAtualizada);
+    setToDo(listaProdutosAtualizada);
   }
 
   function alternarComprado(idProduto) {
-    const listaAtualizada = listaCarrinho.map(produto => {
+    const listaAtualizada = ToDo.map(produto => {
       if (produto.id === idProduto) {
         return { ...produto, comprado: !produto.comprado };
       }
       return produto;
     });
-    setListaCarrinho(listaAtualizada);
+    setToDo(listaAtualizada);
   }
 
   return (
@@ -74,8 +71,8 @@ export default function App() {
       </div>
 
       <div>
-        <h2>Itens do Carrinho ({listaCarrinho.length})</h2>
-        {listaCarrinho.map(item => (
+        <h2>Itens do Carrinho ({ToDo.length})</h2>
+        {ToDo.map(item => (
           <div>
             
             <input 
