@@ -29,13 +29,13 @@ jobs:
           context: . # Usa a pasta raiz do projeto
           push: true # Envia para o registry
           # Mude "seu-usuario" para o seu usuário real abaixo!
-          tags: gabrielcesar00/todo-app:latest
+          tags: joaofc88/todo-app:latest
 
 # Passo 4: Faz o deploy da imagem do Docker Hub no Azure App Service
       - name: Deploy no Azure App Service
         uses: azure/webapps-deploy@v3
         with:
           # Troque pelo nome do seu App Service no portal Azure
-          app-name: 'todo-gabriel'
+          app-name: 'todo-app'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: 'sandrolax/todo-app:v1'
+          images: 'joaofc88/todo-app'

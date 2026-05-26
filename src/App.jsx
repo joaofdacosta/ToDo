@@ -54,7 +54,7 @@ export default function App() {
 
   return (
     <main>
-      <h1>Carrinho Show - Loja Saldão Do Valter</h1>
+      <h1>Carrinho Show - Loja Saldão Do Baú</h1>
 
       <div>
         <div>
